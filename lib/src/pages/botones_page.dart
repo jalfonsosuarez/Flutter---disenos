@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -131,32 +132,32 @@ class BotonesPage extends StatelessWidget {
       children: [
         TableRow(
           children: [
-             _crearBotonRedondeado(),
-             _crearBotonRedondeado(),
+             _crearBotonRedondeado( Colors.blue, Icons.border_all, 'Inicio Jornada' ),
+             _crearBotonRedondeado( Colors.blue, Icons.border_bottom, 'Fin Jornada' ),
           ]
         ),
         TableRow(
           children: [
-             _crearBotonRedondeado(),
-             _crearBotonRedondeado(),
+             _crearBotonRedondeado( Colors.purpleAccent, Icons.business, 'Inicio comida' ),
+             _crearBotonRedondeado( Colors.purpleAccent, Icons.business_center, 'Fin Comida' ),
           ]
         ),
         TableRow(
           children: [
-             _crearBotonRedondeado(),
-             _crearBotonRedondeado(),
+             _crearBotonRedondeado( Colors.pinkAccent, Icons.call_end, 'Otra cosa' ),
+             _crearBotonRedondeado( Colors.pinkAccent, Icons.call, 'Otra cosa' ),
           ]
         ),
         TableRow(
           children: [
-             _crearBotonRedondeado(),
-             _crearBotonRedondeado(),
+             _crearBotonRedondeado( Colors.redAccent, Icons.delete, 'Te borro' ),
+             _crearBotonRedondeado( Colors.redAccent, Icons.delete_forever, 'Te borro para siempre' ),
           ]
         ),
         TableRow(
           children: [
-             _crearBotonRedondeado(),
-             _crearBotonRedondeado(),
+             _crearBotonRedondeado( Colors.greenAccent, Icons.gps_fixed, 'Te localizo' ),
+             _crearBotonRedondeado( Colors.greenAccent, Icons.gps_off, 'No puedo' ),
           ]
         ),
       ],
@@ -164,27 +165,33 @@ class BotonesPage extends StatelessWidget {
     );
   }
 
-  Widget _crearBotonRedondeado() {
+  Widget _crearBotonRedondeado( Color color, IconData icono, String texto ) {
 
-    return Container(
-      height: 188.0,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(20.0)
+    return BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX: 0.0,
+        sigmaY: 0.0
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          SizedBox(height: 5.0),
-          CircleAvatar(
-            backgroundColor: Colors.pinkAccent,
-            radius: 35.0,
-            child: Icon( Icons.swap_calls, color: Colors.white, size: 30.0,),
-          ),
-          Text( 'Algo', style: TextStyle( color: Colors.pinkAccent ), ),
-          SizedBox(height: 5.0),
-        ],
+      child: Container(
+        height: 188.0,
+        margin: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(62, 66, 107, 0.7),
+          borderRadius: BorderRadius.circular(20.0)
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            SizedBox(height: 5.0),
+            CircleAvatar(
+              backgroundColor: color,
+              radius: 35.0,
+              child: Icon( icono, color: Colors.white, size: 30.0,),
+            ),
+            Text( texto, style: TextStyle( color: color ), ),
+            SizedBox(height: 5.0),
+          ],
+        ),
       ),
     );
 
