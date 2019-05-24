@@ -13,34 +13,89 @@ class BasicoPage extends StatelessWidget {
       body: Column(
         children: <Widget>[
 
-          Image(
-            image: NetworkImage('https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-          ),
-
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-            child: Row(
-              children: <Widget>[
-
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text( 'Lago con puente', style: estiloTitulo,),
-                      SizedBox(height: 7.0,),
-                      Text( 'Se ve el puente reflejado.', style: estiloSubtitulo,)
-                    ],
-                  ),
-                ),
-
-                Icon( Icons.star, color: Colors.red, size: 30.0,),
-                Text ( '41', style: TextStyle( fontSize: 20.0 ), )
-              ],
-            ),
-          )
+          _crearImagen(),
+          _crearTitulo(),
+          _crearAcciones(),
+          _crearTexto(),
 
         ],
       )
     );
   }
+
+  Widget _crearImagen() {
+
+    return Image(
+      image: NetworkImage('https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+    );
+
+  }
+
+  Widget _crearTitulo() {
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+      child: Row(
+        children: <Widget>[
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text( 'Lago con puente', style: estiloTitulo,),
+                SizedBox(height: 7.0,),
+                Text( 'Se ve el puente reflejado.', style: estiloSubtitulo,)
+              ],
+            ),
+          ),
+
+          Icon( Icons.star, color: Colors.red, size: 30.0,),
+          Text ( '41', style: TextStyle( fontSize: 20.0 ), )
+        ],
+      ),
+    );
+
+  }
+
+  Widget _crearAcciones() {
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+
+        _accion( Icons.call, 'CALL' ),
+        _accion( Icons.near_me, 'ROUTE' ),
+        _accion( Icons.share, 'SHARE' ),
+
+      ],
+    );
+
+  }
+
+  Widget _accion( IconData icon, String texto ){
+
+    return Column(
+      children: <Widget>[
+        Icon( icon, color: Colors.blue, size: 40.0 ),
+        SizedBox( height: 5.0 ),
+        Text( texto, style: TextStyle( fontSize: 15.0, color: Colors.blue ) ),
+      ],
+    );
+
+  }
+
+  Widget _crearTexto() {
+
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+      child: Text(
+        'Sit nostrud deserunt magna esse aliqua commodo anim magna. Nisi commodo mollit ut tempor culpa ipsum nostrud voluptate duis reprehenderit occaecat do. Voluptate ex deserunt anim voluptate dolore est. Officia culpa incididunt excepteur eu minim. Aliquip exercitation sit commodo in enim eu quis sunt ut.',
+        textAlign: TextAlign.justify,
+      ),
+    );
+
+
+  }
+
 }
