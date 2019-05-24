@@ -10,6 +10,14 @@ class BotonesPage extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           _fondoApp(),
+          SingleChildScrollView(
+            // controller: controller,
+            child: Column(
+              children: <Widget>[
+                _titulos(),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -56,8 +64,28 @@ class BotonesPage extends StatelessWidget {
         Positioned(
           top: -100.0,
           child: cajaRosa,
-        ),        
+        ),
       ],
+    );
+
+  }
+
+  Widget _titulos() {
+
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text( 'Un texto cualquiera.', 
+                  style: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold ), ),
+            SizedBox( height: 10.0,),
+            Text( 'Un texto cualquiera para poner dentro del cuadro rosa.', 
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),  ),
+          ],
+        ),
+      ),
     );
 
   }
